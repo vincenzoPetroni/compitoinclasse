@@ -1,0 +1,36 @@
+<html>
+    <head>
+        <title>Indovina il numero</title>
+        <script type="text/javascript">
+            const randomNumber = (min, max) => {
+                return Math.floor(Math.random() * (max - min + 1) + min);
+            };
+
+            let guessedNumber;
+            let generatedNumber = randomNumber(1, 10);
+
+            function guess() {
+                guessedNumber = document.getElementById('guessedNumber').value;
+
+                if (guessedNumber > generatedNumber) {
+                    document.getElementById('result').innerHTML = "Numero troppo alto";
+                } else if (guessedNumber < generatedNumber) {
+                    document.getElementById('result').innerHTML = "Numero troppo basso";
+                } else if (guessedNumber == generatedNumber) {
+                    document.getElementById('result').innerHTML = "Complimenti, hai vinto!";
+                }
+            }
+
+            function resetGame() {
+                generatedNumber = randomNumber(1, 10);
+            }
+        </script>
+    </head>
+
+    <body>
+        <input type="number" id="guessedNumber" placeholder="Indovina il numero...">
+        <button type="button" onclick="guess()">Invia</button>
+        <button type="button" onclick="resetGame()">Reset</button>
+        <p>Risultato: <span id="result"></span></p>
+    </body>
+</html>

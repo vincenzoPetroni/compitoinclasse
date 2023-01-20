@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Trova se il numero è primo</title>
+</head>
+<body>
+	<h1>Trova se il numero è primo</h1>
+	<form action="" method="post" onsubmit="return controllaNumeroPrimo()">
+		<input type="text" placeholder="Inserisci un numero intero" name="numero" id="numero">
+		<input type="submit" value="Invio">
+	</form>
+	<div id="risultato"></div>
+	<script>
+		function controllaNumeroPrimo() {
+
+			var numero = document.getElementById('numero').value;
+
+			if (numero == 1 || numero == 0) {
+				document.getElementById('risultato').innerHTML = 'Il numero inserito non è primo';
+				return false;
+			} else if (numero == 2) {
+				document.getElementById('risultato').innerHTML = 'Il numero inserito è primo';
+				return false;
+			} else {
+				for (var i = 2; i < numero; i++) {
+					if (numero % i == 0) {
+						document.getElementById('risultato').innerHTML = 'Il numero inserito non è primo';
+						return false;
+					}
+				}
+				document.getElementById('risultato').innerHTML = 'Il numero inserito è primo';
+				return false;
+			}
+		}
+	</script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+
+    <html>
+        <head>
+          <title>Color Picker</title>
+          <style>
+            body {
+              background-color: #DCDCDC;
+            }
+          </style>
+        </head>
+        <body>
+          <h1>Color Picker</h1>
+          <p>Seleziona un colore da utilizzare come sfondo della pagina.</p>
+          <form action="">
+            <input type="radio" name="background" value="#DCDCDC" checked>Grigio<br>
+            <input type="radio" name="background" value="red">Rosso<br>
+            <input type="radio" name="background" value="green">Verde<br>
+            <input type="radio" name="background" value="blue">Blu<br>
+            <input type="text" name="custom" placeholder="Inserisci qui un codice esadecimale custom">
+            <input type="submit" value="Cambia colore">
+          </form>
+          <script>
+            const form = document.querySelector("form");
+            const radios = document.querySelectorAll("input[type='radio']");
+      
+            form.addEventListener("submit", e => {
+              e.preventDefault();
+              let color;
+      
+              radios.forEach(radio => {
+                if (radio.checked) {
+                  color = radio.value;
+                }
+              });
+              //Se è stato inserito un codice esadecimale custom, utilizzarlo
+              const customCode = document.querySelector("input[name='custom']").value;
+              if (customCode) {
+                color = customCode;
+              }
+              document.body.style.backgroundColor = color;
+            });
+          </script>
+        </body>
+      </html>
+      
